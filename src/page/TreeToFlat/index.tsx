@@ -50,7 +50,7 @@ const TreeToFlat: React.FC = () => {
 			setArr(JSON.stringify(newFlat, null, 4));
 		} catch (error) {
 			console.log(error);
-			void message.error(error.message as string);
+			void message.error((error as {message: string}).message );
 		}
 	};
 
