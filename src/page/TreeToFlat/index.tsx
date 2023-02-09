@@ -50,7 +50,7 @@ const TreeToFlat: React.FC = () => {
 			setArr(JSON.stringify(newFlat, null, 4));
 		} catch (error) {
 			console.log(error);
-			void message.error((error as {message: string}).message );
+			void message.error((error as { message: string }).message);
 		}
 	};
 
@@ -59,7 +59,7 @@ const TreeToFlat: React.FC = () => {
 			key: "1",
 			params: "arr",
 			explain: "必填，需要转化的嵌套树结构数据",
-			type: "arr[]",
+			type: "arr[]  ",
 			default: "-",
 		},
 		{
