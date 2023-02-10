@@ -2,10 +2,10 @@ import React from "react";
 import { ItemType } from "antd/es/menu/hooks/useItems";
 import { Link, RouteObject } from "react-router-dom";
 import App from "../App";
-import TreeToFlat from "../page/TreeToFlat";
-
 import { PieChartOutlined } from "@ant-design/icons";
-import FlatToTree from "../page/FlatToTree";
+
+const TreeToFlat = React.lazy(async () => await import("../page/TreeToFlat"));
+const FlatToTree = React.lazy(async () => await import("../page/FlatToTree"));
 
 export const routers: RouteObject[] = [
 	{

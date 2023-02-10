@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import { Outlet, useLocation } from "react-router-dom";
@@ -57,7 +57,9 @@ const App: React.FC = () => {
 						overflow: "auto",
 					}}
 				>
-					<Outlet />
+					<Suspense fallback={<div>Loading...</div>}>
+						<Outlet />
+					</Suspense>
 				</Content>
 			</Layout>
 		</Layout>
