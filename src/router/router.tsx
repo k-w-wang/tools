@@ -34,21 +34,21 @@ export const routers: RouteObject[] = [
 
 export const menus: ItemType[] = [
 	{
-		key: "1",
+		key: "/",
 		label: <Link to="/">Home</Link>,
 		icon: <PieChartOutlined />,
 	},
 	{
-		key: "2",
+		key: "/function",
 		label: "Function",
 		icon: <PieChartOutlined />,
 		children: [
 			{
-				key: "3",
+				key: "/function/treetoflat",
 				label: <Link to="/function/treetoflat">TreeToFlat</Link>,
 			},
 			{
-				key: "4",
+				key: "/function/flattotree",
 				label: <Link to="/function/flattotree">FlatToTree</Link>,
 			},
 		],

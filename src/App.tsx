@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import "./App.css";
 import { menus } from "./router/router";
 
@@ -9,6 +9,17 @@ const { Header, Sider, Content } = Layout;
 
 const App: React.FC = () => {
 	const [collapsed, setCollapsed] = useState(false);
+
+	const location = useLocation();
+
+	const [openKeys, setOpenKeys] = useState(() => {
+		return [
+			location.pathname
+				.split("/")
+				.slice(0, location.pathname.split("/").length - 1)
+				.join("/"),
+		];
+	});
 
 	const {
 		token: { colorBgContainer },
@@ -21,8 +32,10 @@ const App: React.FC = () => {
 				<Menu
 					theme="dark"
 					mode="inline"
-					defaultSelectedKeys={["1"]}
+					selectedKeys={[location.pathname]}
+					openKeys={openKeys}
 					items={menus}
+					onOpenChange={setOpenKeys}
 				/>
 			</Sider>
 			<Layout className="site-layout">
