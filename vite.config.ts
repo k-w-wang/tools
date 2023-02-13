@@ -11,5 +11,12 @@ export default defineConfig({
         changeOrigin: true,
       }
     }
-  }
+  },
+  // build: {
+  //   commonjsOptions: {
+  //     transformMixedEsModules: true,
+  //     dynamicRequireTargets: ["./.cz-config.js", 'node_modules/cz-customizable/*.js'],
+  //     ignoreDynamicRequires: true
+  //   }
+  // }
 })
