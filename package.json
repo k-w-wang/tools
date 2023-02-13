@@ -8,7 +8,8 @@
     "build": "tsc && vite build --base /tools",
     "preview": "vite preview",
     "lint": "lint-staged --allow-empty",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "git-cz"
   },
   "dependencies": {
     "antd": "^5.0.7",
@@ -29,7 +30,9 @@
     "@types/react-dom": "^18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@vitejs/plugin-react": "^3.0.0",
+    "commitizen": "^4.3.0",
     "commitlint": "^17.4.2",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^24.0.0",
@@ -45,5 +48,10 @@
     "prettier-eslint-cli": "^7.1.0",
     "typescript": "^4.9.4",
     "vite": "^4.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
