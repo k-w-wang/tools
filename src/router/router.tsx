@@ -3,6 +3,7 @@ import { ItemType } from "antd/es/menu/hooks/useItems";
 import { Link, RouteObject } from "react-router-dom";
 import App from "../App";
 import { PieChartOutlined } from "@ant-design/icons";
+import Debounce from "../page/Debounce";
 
 const TreeToFlat = React.lazy(async () => await import("../page/TreeToFlat"));
 const FlatToTree = React.lazy(async () => await import("../page/FlatToTree"));
@@ -25,6 +26,10 @@ export const routers: RouteObject[] = [
 					{
 						path: "/function/flattotree",
 						element: <FlatToTree />,
+					},
+					{
+						path: "/function/debounce",
+						element: <Debounce />,
 					},
 				],
 			},
@@ -50,6 +55,10 @@ export const menus: ItemType[] = [
 			{
 				key: "/function/flattotree",
 				label: <Link to="/function/flattotree">FlatToTree</Link>,
+			},
+			{
+				key: "/function/debounce",
+				label: <Link to="/function/debounce">Debounce</Link>,
 			},
 		],
 	},

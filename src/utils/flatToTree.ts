@@ -1,6 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+/**
+ *
+ * @param arrs
+ * @param uniqueKey
+ * @param pId
+ * @param childKey
+ * @returns
+ */
 export function flatToTree(
-	items: any[],
+	arrs: any[],
 	uniqueKey = "id",
 	pId = "pId",
 	childKey = "children"
@@ -9,7 +18,7 @@ export function flatToTree(
 
 	const itemMap: any = {}; // 存放过程数据
 
-	for (const item of items) {
+	for (const item of arrs) {
 		if (itemMap[item[uniqueKey]] == null) {
 			itemMap[item[uniqueKey]] = {
 				[childKey]: [],

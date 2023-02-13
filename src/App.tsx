@@ -24,7 +24,6 @@ const App: React.FC = () => {
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
-
 	return (
 		<Layout className="root-layout">
 			<Sider trigger={null} collapsible collapsed={collapsed}>

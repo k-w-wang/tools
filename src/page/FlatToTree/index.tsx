@@ -54,7 +54,7 @@ const FlatToTree: React.FC = () => {
 	const dataSource = [
 		{
 			key: "1",
-			params: "items",
+			params: "arrs",
 			explain: "必填，需要转化的数组数据",
 			type: "arr[] ",
 			default: "-",
@@ -135,7 +135,7 @@ const FlatToTree: React.FC = () => {
 			<pre>
 				<Typography.Text code>
 					{
-						"flatToTree(items: any[], uniqueKey?: string, pId?: string, childKey?: string): any[]"
+						"flatToTree(arrs: any[], uniqueKey?: string, pId?: string, childKey?: string): any[]"
 					}
 				</Typography.Text>
 			</pre>
