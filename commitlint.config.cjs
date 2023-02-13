@@ -1,1 +1,4 @@
-module.exports = { extends: ['cz'], rules: {} }
+module.exports = {
+    extends: ['cz'], rules: {
+    }
+}
