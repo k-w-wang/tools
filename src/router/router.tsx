@@ -3,10 +3,11 @@ import { ItemType } from "antd/es/menu/hooks/useItems";
 import { Link, RouteObject } from "react-router-dom";
 import App from "../App";
 import { PieChartOutlined } from "@ant-design/icons";
-import Debounce from "../page/Debounce";
 
 const TreeToFlat = React.lazy(async () => await import("../page/TreeToFlat"));
 const FlatToTree = React.lazy(async () => await import("../page/FlatToTree"));
+const Debounce = React.lazy(async () => await import("../page/Debounce"));
+const Throttle = React.lazy(async () => await import("../page/Throttle"));
 
 export const routers: RouteObject[] = [
 	{
@@ -30,6 +31,10 @@ export const routers: RouteObject[] = [
 					{
 						path: "/function/debounce",
 						element: <Debounce />,
+					},
+					{
+						path: "/function/throttle",
+						element: <Throttle />,
 					},
 				],
 			},
@@ -59,6 +64,10 @@ export const menus: ItemType[] = [
 			{
 				key: "/function/debounce",
 				label: <Link to="/function/debounce">Debounce</Link>,
+			},
+			{
+				key: "/function/throttle",
+				label: <Link to="/function/throttle">Throttle</Link>,
 			},
 		],
 	},

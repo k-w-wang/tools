@@ -11,6 +11,9 @@ export function debounce<T>(
 	delay: number = 1000,
 	immediately: boolean = false
 ): T {
+	if (typeof fn !== "function") {
+		throw new TypeError("Expected a function");
+	}
 	// 存储定时器
 	let timer: null | NodeJS.Timeout = null;
 

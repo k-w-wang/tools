@@ -13,6 +13,9 @@ export function useDebounce<T>(
 	delay: number = 1000,
 	immediately: boolean = false
 ): T {
+	if (typeof fn !== "function") {
+		throw new TypeError("Expected a function");
+	}
 	// 存储定时器
 	const timerRef = useRef<NodeJS.Timeout | null>(null);
 

@@ -8,6 +8,9 @@
 // interval 间隔时间，也就是cd的长短
 
 export function throttle<T>(fn: T & Function, interval: number): T {
+	if (typeof fn !== "function") {
+		throw new TypeError("Expected a function");
+	}
 	// 记录上次执行时间
 	let lastTime = 0;
 
