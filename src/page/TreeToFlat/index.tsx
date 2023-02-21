@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Input, message, Space, Table, Typography } from "antd";
 import { nestedToFlat } from "../../utils/treeToFlat";
+import CommentInput from "../components/CommentInput";
 const { Title } = Typography;
 const initTree = [
 	{
@@ -108,8 +109,17 @@ const TreeToFlat: React.FC = () => {
 		},
 	];
 
+	const onPost = (value: string) => {
+		console.log(value);
+	};
+
 	return (
 		<Typography>
+			<CommentInput
+				placeholder="add commnt"
+				onPost={onPost}
+				imgUrl="https://p3-passport.byteimg.com/img/user-avatar/dbe68af40bc02e65b8f1ff4a191c1ad8~100x100.awebp"
+			/>
 			<Title>TreeToFlat</Title>
 			<Title level={5}>
 				TreeToFlat是一个把嵌套树结构转化为数组结构的方法。
