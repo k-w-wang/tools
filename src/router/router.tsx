@@ -3,6 +3,8 @@ import { ItemType } from "antd/es/menu/hooks/useItems";
 import { Link, RouteObject } from "react-router-dom";
 import App from "../App";
 import { PieChartOutlined } from "@ant-design/icons";
+import CommentInput from "../page/components/CommentInput";
+import ShowComponents from "../page/ShowComponents";
 
 const TreeToFlat = React.lazy(async () => await import("../page/TreeToFlat"));
 const FlatToTree = React.lazy(async () => await import("../page/FlatToTree"));
@@ -38,6 +40,31 @@ export const routers: RouteObject[] = [
 					},
 				],
 			},
+			{
+				path: "/components",
+				children: [
+					{
+						path: "/components/commentinput",
+						element: <CommentInput />,
+					},
+					{
+						path: "/components/showcomponents",
+						element: <ShowComponents />,
+					},
+					// {
+					// 	path: "/components/flattotree",
+					// 	element: <FlatToTree />,
+					// },
+					// {
+					// 	path: "/components/debounce",
+					// 	element: <Debounce />,
+					// },
+					// {
+					// 	path: "/components/throttle",
+					// 	element: <Throttle />,
+					// },
+				],
+			},
 		],
 	},
 ];
@@ -69,6 +96,29 @@ export const menus: ItemType[] = [
 				key: "/function/throttle",
 				label: <Link to="/function/throttle">Throttle</Link>,
 			},
+		],
+	},
+	{
+		key: "/components",
+		label: "Components",
+		icon: <PieChartOutlined />,
+		children: [
+			{
+				key: "/components/commentinput",
+				label: <Link to="/components/commentinput">CommentInput</Link>,
+			},
+			{
+				key: "/components/showcomponents",
+				label: <Link to="/components/showcomponents">showcomponents</Link>,
+			},
+			// {
+			// 	key: "/components/debounce",
+			// 	label: <Link to="/function/debounce">Debounce</Link>,
+			// },
+			// {
+			// 	key: "/components/throttle",
+			// 	label: <Link to="/function/throttle">Throttle</Link>,
+			// },
 		],
 	},
 ];

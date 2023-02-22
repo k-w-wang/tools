@@ -18,7 +18,12 @@ interface IProps
  * @returns {FunctionComponent} 返回一个FunctionComponent组件
  */
 
-const CommentInput: React.FC<IProps> = ({ onPost, imgUrl, ...props }) => {
+const CommentInput: React.FC<IProps> = ({
+	onPost,
+	imgUrl,
+	onChange,
+	...props
+}) => {
 	// 样式
 	const [className, setClassName] = useState<string>("comment-input");
 
@@ -34,8 +39,12 @@ const CommentInput: React.FC<IProps> = ({ onPost, imgUrl, ...props }) => {
 	};
 
 	// input输入改变时
-	const onChange: (e: ChangeEvent<HTMLInputElement>) => void = (e) => {
+	const onInputChange: (e: ChangeEvent<HTMLInputElement>) => void = (e) => {
 		setValue(e.target.value);
+		// 当传过来onchange方法时进行触发
+		if (onChange != null) {
+			onChange(e);
+		}
 	};
 
 	// Post按钮点击时触发
@@ -48,17 +57,15 @@ const CommentInput: React.FC<IProps> = ({ onPost, imgUrl, ...props }) => {
 	const disabled = useMemo(() => value === "", [value]);
 
 	return (
-		<span className={className}>
+		<span className={className} onFocus={onFocus} onBlur={onBlur}>
 			{imgUrl != null && imgUrl !== "" ? (
 				<img className="input-prefix" src={imgUrl} />
 			) : (
 				<></>
 			)}
 			<input
-				onFocus={onFocus}
-				onBlur={onBlur}
-				onChange={(e) => onChange(e)}
-				type="text"
+				onChange={(e) => onInputChange(e)}
+				// type="text"
 				{...props}
 			/>
 			<button disabled={disabled} onClick={onClick}>
