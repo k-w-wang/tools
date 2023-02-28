@@ -3,8 +3,8 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 
 const { Option } = Select;
 
-type Price = string | undefined;
-type Currency = "$" | "￥" | undefined;
+type Price = string;
+type Currency = "$" | "￥";
 
 interface Value {
 	price: Price;
@@ -18,7 +18,7 @@ interface IProps {
 
 const Donation: React.FC<IProps> = ({ value, onChange }) => {
 	// 初始化数据
-	const [price, setPrice] = useState<Price>(value?.price);
+	const [price, setPrice] = useState<Price>(value?.price ?? "");
 	const [currency, setCurrency] = useState<Currency>(value?.currency ?? "￥");
 
 	// 第一次进来不进行rule校验提示
