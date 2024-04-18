@@ -4,13 +4,18 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc && vite build --base /tools",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "lint-staged --allow-empty",
     "prepare": "husky install",
     "commit": "git-cz"
   },
   "dependencies": {
+    "@rjsf/antd": "^5.13.6",
+    "@rjsf/core": "^5.13.6",
+    "@rjsf/utils": "^5.13.6",
+    "@rjsf/validator-ajv8": "^5.13.6",
+    "@vitejs/plugin-basic-ssl": "^1.0.1",
     "antd": "^5.0.7",
     "dayjs": "^1.11.7",
     "lodash": "^4.17.21",
@@ -29,6 +34,7 @@
     "@types/react-dom": "^18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@vitejs/plugin-react": "^3.0.0",
+    "@welldone-software/why-did-you-render": "^7.0.1",
     "commitizen": "^4.3.0",
     "commitlint": "^17.4.2",
     "commitlint-config-cz": "^0.13.3",
