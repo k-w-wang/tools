@@ -5,8 +5,6 @@ import App from "../App";
 import { PieChartOutlined } from "@ant-design/icons";
 import CommentInput from "../page/components/CommentInput";
 import ShowComponents from "../page/ShowComponents";
-import Iframe from "../page/Iframe";
-import IframeTwo from "../page/IframeTwo";
 
 const TreeToFlat = React.lazy(async () => await import("../page/TreeToFlat"));
 const FlatToTree = React.lazy(async () => await import("../page/FlatToTree"));
@@ -67,14 +65,6 @@ export const routers: RouteObject[] = [
 					// 	element: <Throttle />,
 					// },
 				],
-			},
-			{
-				path: "/iframe",
-				element: <Iframe />,
-			},
-			{
-				path: "/iframetwo",
-				element: <IframeTwo />,
 			},
 			{
 				path: "/form",
