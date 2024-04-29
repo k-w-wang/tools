@@ -1,7 +1,7 @@
 import React from "react";
 
-import CroppingTextV2 from "../components/CroppingTextV2";
-import CroppingTextWapper from "../components/CroppingText";
+import CroppingText from "../components/CroppingText";
+import CroppingTextWapper from "../components/CroppingTextWapper";
 
 const Index: React.FC = () => {
 	const [contentList, setContentList] = React.useState([
@@ -45,7 +45,13 @@ const Index: React.FC = () => {
 	return (
 		<>
 			<h1>V1版本</h1>
-			<CroppingTextWapper key={"v1"} content="这是一段测试文字！" />
+			<CroppingTextWapper
+				key={"v1"}
+				content="这是一段测试文字！"
+				onChange={(value) => {
+					console.log(value);
+				}}
+			/>
 			<h1>V2版本</h1>
 			<div
 				key={"v2"}
@@ -53,7 +59,7 @@ const Index: React.FC = () => {
 			>
 				{contentList.map((item, index) => {
 					return (
-						<CroppingTextV2
+						<CroppingText
 							key={item + index.toString()}
 							content={item}
 							onSplitChange={(value: string[]) => onSplitChange(value, index)}
