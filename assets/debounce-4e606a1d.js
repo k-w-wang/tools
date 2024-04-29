@@ -1,0 +1,1 @@
+function f(l,i=1e3,u=!1){if(typeof l!="function")throw new TypeError("Expected a function");let e=null,t=!1;return function(...o){e!==null&&clearTimeout(e),u&&!t?(l.apply(this,o),t=!0,e=setTimeout(()=>{t=!1},i)):e=setTimeout(()=>{l.apply(this,o),t=!1},i)}}export{f as d};
