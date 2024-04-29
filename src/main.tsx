@@ -5,7 +5,5 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import { routers } from "./router/router";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-	<React.StrictMode>
-		<RouterProvider router={createHashRouter(routers)} />
-	</React.StrictMode>
+	<RouterProvider router={createHashRouter(routers)} />
 );

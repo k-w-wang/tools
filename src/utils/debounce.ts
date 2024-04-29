@@ -27,7 +27,6 @@ export function debounce<T>(
 			fn.apply(this, arg);
 
 			flag = true;
-			console.log(flag);
 
 			timer = setTimeout(() => {
 				flag = false;
