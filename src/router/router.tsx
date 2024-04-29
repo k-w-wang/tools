@@ -11,7 +11,9 @@ const FlatToTree = React.lazy(async () => await import("../page/FlatToTree"));
 const Debounce = React.lazy(async () => await import("../page/Debounce"));
 const Throttle = React.lazy(async () => await import("../page/Throttle"));
 const SplitText = React.lazy(async () => await import("../page/SplitText"));
-
+const StreamOutput = React.lazy(
+	async () => await import("../page/StreamOutput")
+);
 export const routers: RouteObject[] = [
 	{
 		element: <App />,
@@ -69,6 +71,10 @@ export const routers: RouteObject[] = [
 			{
 				path: "/form",
 				element: <SplitText />,
+			},
+			{
+				path: "/stream",
+				element: <StreamOutput />,
 			},
 		],
 	},

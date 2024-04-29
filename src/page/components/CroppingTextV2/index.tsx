@@ -71,9 +71,13 @@ export default function CroppingText({
 		textRef.current?.addEventListener("mousemove", (e) => {
 			// 鼠标相当于文本节点的相对位置
 			const textRefRect = textRef.current?.getBoundingClientRect();
+			// 元素滚动的距离
+			const textRefScrollTop = textRef.current?.scrollTop;
+
 			setMousePosition({
 				x: e.clientX - (textRefRect?.left ?? 0),
-				y: e.clientY - (textRefRect?.top ?? 0),
+				// 鼠标相对于文本节点的相对位置
+				y: e.clientY - (textRefRect?.top ?? 0) + (textRefScrollTop ?? 0),
 			});
 		});
 		textRef.current?.addEventListener("mouseleave", (e) => {
@@ -126,6 +130,8 @@ export default function CroppingText({
 			style={{
 				border: "1px dashed #3c85f0",
 				padding: 4,
+				maxHeight: 50,
+				overflowY: "auto",
 			}}
 			onClick={() => {
 				if (currentIndex == null) return;
