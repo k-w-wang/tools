@@ -11,6 +11,8 @@ const FlatToTree = React.lazy(async () => await import("../page/FlatToTree"));
 const Debounce = React.lazy(async () => await import("../page/Debounce"));
 const Throttle = React.lazy(async () => await import("../page/Throttle"));
 const SplitText = React.lazy(async () => await import("../page/SplitText"));
+const PdfPreview = React.lazy(async () => await import("../page/PdfPreview"));
+
 const StreamOutput = React.lazy(
 	async () => await import("../page/StreamOutput")
 );
@@ -75,6 +77,10 @@ export const routers: RouteObject[] = [
 			{
 				path: "/stream",
 				element: <StreamOutput />,
+			},
+			{
+				path: "/pdf",
+				element: <PdfPreview />,
 			},
 		],
 	},
@@ -145,6 +151,11 @@ export const menus: ItemType[] = [
 	{
 		key: "/form",
 		label: <Link to="/form">文字裁剪</Link>,
+		icon: <PieChartOutlined />,
+	},
+	{
+		key: "/pdf",
+		label: <Link to="/pdf">PDF</Link>,
 		icon: <PieChartOutlined />,
 	},
 ];
