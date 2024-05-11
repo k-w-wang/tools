@@ -12,6 +12,9 @@ const Debounce = React.lazy(async () => await import("../page/Debounce"));
 const Throttle = React.lazy(async () => await import("../page/Throttle"));
 const SplitText = React.lazy(async () => await import("../page/SplitText"));
 const PdfPreview = React.lazy(async () => await import("../page/PdfPreview"));
+const PdfPreviewV2 = React.lazy(
+	async () => await import("../page/PdfPreviewV2")
+);
 
 const StreamOutput = React.lazy(
 	async () => await import("../page/StreamOutput")
@@ -81,6 +84,10 @@ export const routers: RouteObject[] = [
 			{
 				path: "/pdf",
 				element: <PdfPreview />,
+			},
+			{
+				path: "/pdfV2",
+				element: <PdfPreviewV2 />,
 			},
 		],
 	},
@@ -156,6 +163,11 @@ export const menus: ItemType[] = [
 	{
 		key: "/pdf",
 		label: <Link to="/pdf">PDF</Link>,
+		icon: <PieChartOutlined />,
+	},
+	{
+		key: "/pdfV2",
+		label: <Link to="/pdfV2">PDFV2</Link>,
 		icon: <PieChartOutlined />,
 	},
 ];

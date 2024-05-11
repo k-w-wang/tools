@@ -13,6 +13,8 @@ export const useLoadPdfData = (
 ) => {
 	const [pdfDataList, setDataList] = useState<PdfData[]>([]);
 	useEffect(() => {
+		console.log("pdf开始");
+		console.time("pdf加载时间");
 		const getcanvas = async () => {
 			const viewPdfList: PdfData[] = [];
 			const pdf = await getDocument({
@@ -24,18 +26,20 @@ export const useLoadPdfData = (
 				const page = await pdf.getPage(i + 1);
 
 				const viewport = page.getViewport({ scale });
-				console.log(viewport);
 
 				const canvas = document.createElement("canvas");
 				const canvasContext = canvas.getContext("2d");
 				canvas.width = viewport.width;
 				canvas.height = viewport.height;
 				// 渲染pdf
+				console.time("page.render");
 				canvasContext != null &&
 					(await page.render({
 						canvasContext,
 						viewport,
 					}).promise);
+				console.timeEnd("page.render");
+
 				page.cleanup();
 				viewPdfList.push({
 					width: viewport.width,
@@ -47,6 +51,7 @@ export const useLoadPdfData = (
 		};
 		void getcanvas().then((res) => {
 			setDataList(res);
+			console.timeEnd("pdf加载时间");
 		});
 	}, refreshDeps);
 	return pdfDataList;
