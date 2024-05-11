@@ -116,7 +116,7 @@ export default function PdfPreview() {
 				}}
 			>
 				<AutoSizer>
-					{({ width, height }) => (
+					{({ width, height }: { width: number; height: number }) => (
 						<Virtuoso
 							ref={virtuosoRef}
 							style={{ height, width }}
@@ -145,7 +145,7 @@ export default function PdfPreview() {
 			</div>
 			<div style={{ flexGrow: 1, height: "100%", overflow: "hidden" }}>
 				<AutoSizer>
-					{({ width, height }) => (
+					{({ width, height }: { width: number; height: number }) => (
 						<div
 							ref={containerRef}
 							style={{ width, height, overflow: "auto" }}
