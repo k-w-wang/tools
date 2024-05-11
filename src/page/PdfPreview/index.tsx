@@ -12,7 +12,7 @@ import { useLoadPdfData } from "../../utils/useLoadPdfData";
 import AutoSizer from "react-virtualized-auto-sizer";
 import Konva from "konva";
 
-GlobalWorkerOptions.workerSrc = "/pdf.worker.mjs";
+GlobalWorkerOptions.workerSrc = "pdf.worker.js";
 export default function PdfPreview() {
 	const stageRef = useRef<Konva.Stage>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
