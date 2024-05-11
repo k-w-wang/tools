@@ -1,1 +1,1 @@
-function f(l,i=1e3,u=!1){if(typeof l!="function")throw new TypeError("Expected a function");let e=null,t=!1;return function(...o){e!==null&&clearTimeout(e),u&&!t?(l.apply(this,o),t=!0,e=setTimeout(()=>{t=!1},i)):e=setTimeout(()=>{l.apply(this,o),t=!1},i)}}export{f as d};
+function p(n,o=1e3,i=!1){if(typeof n!="function")throw new TypeError("Expected a function");let t=null,e=!1;return function(...u){t!==null&&clearTimeout(t),i&&!e?(n.apply(this,u),e=!0,t=setTimeout(()=>{e=!1},o)):t=setTimeout(()=>{n.apply(this,u),e=!1},o)}}export{p as d};
