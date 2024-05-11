@@ -22,6 +22,7 @@ export default function PdfPreview() {
 	}>({ x: 0, y: 0 });
 
 	const [currentPage, setCurrentPage] = React.useState<number>(0);
+	const [clickPage, setClickPage] = React.useState<number>(0);
 	const virtuosoRef = useRef<VirtuosoHandle>(null);
 
 	const pdfdata = useLoadPdfData(
@@ -83,7 +84,7 @@ export default function PdfPreview() {
 		for (let index = 0; index < pdfdata.length; index++) {
 			const data = pdfdata[index];
 
-			if (index === currentPage) {
+			if (index === clickPage) {
 				containerRef.current?.scrollTo({
 					top: top + 10,
 				});
@@ -92,7 +93,7 @@ export default function PdfPreview() {
 				top = top + data.height;
 			}
 		}
-	}, [currentPage, pdfdata]);
+	}, [clickPage, pdfdata]);
 
 	return (
 		<div
@@ -121,7 +122,6 @@ export default function PdfPreview() {
 							ref={virtuosoRef}
 							style={{ height, width }}
 							totalCount={pdfdata.length}
-							// customScrollParent={containerRef.current ?? undefined}
 							overscan={{ main: height, reverse: height }} // 上下各多渲染一屏的内容
 							itemContent={(index) => (
 								<div
@@ -129,12 +129,12 @@ export default function PdfPreview() {
 										currentPage === index ? { border: "1px solid #000" } : {}
 									}
 								>
-									{" "}
 									<img
 										width={"100%"}
 										src={pdfdata[index].pdfImgDataUrl}
 										onClick={() => {
 											setCurrentPage(index);
+											setClickPage(index);
 										}}
 									/>
 								</div>
