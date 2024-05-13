@@ -20,7 +20,7 @@ interface PdfPageProps {
 	height: number;
 	pages: PDFDocumentProxy;
 	currentPage: number;
-
+	activePage: number;
 	handleCurrentPage: (index: number) => void;
 }
 export type PageInfo = Record<string, number>;
@@ -35,8 +35,11 @@ function PdfPage({
 	height,
 	pages,
 	currentPage,
+	activePage,
 	handleCurrentPage,
 }: PdfPageProps) {
+	console.log(currentPage);
+
 	const containerRef = useRef<HTMLDivElement>(null);
 	const stageRef = useRef<Konva.Stage>(null);
 	const [scroll, setScroll] = useState<{
@@ -127,6 +130,29 @@ function PdfPage({
 		handleCurrentPage(index);
 	}, [scroll, pageList]);
 
+	const handleScrollTo = useCallback(
+		(activePage: number) => {
+			let top = 0;
+			for (let index = 0; index < pageList.length; index++) {
+				const data = pageList[index];
+
+				if (index === activePage) {
+					containerRef.current?.scrollTo({
+						top: top + 5,
+					});
+					break;
+				} else {
+					top = top + data.height;
+				}
+			}
+		},
+		[pageList]
+	);
+
+	useEffect(() => {
+		handleScrollTo(activePage);
+	}, [activePage]);
+
 	return (
 		<div
 			ref={containerRef}
@@ -149,6 +175,9 @@ function PdfPage({
 				>
 					<Layer>
 						{range(pages.numPages).map((index) => {
+							if (Math.abs(index - currentPage) > 3) {
+								return null;
+							}
 							return (
 								<Group
 									key={index}

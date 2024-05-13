@@ -13,12 +13,16 @@ export default function PdfPreview() {
 	const [urlList, setUrlList] = useState<string[]>([]);
 
 	const [currentPage, setCurrentPage] = React.useState<number>(0);
+	const [activePage, setActivePage] = React.useState<number>(0);
 
 	const virtuosoRef = useRef<VirtuosoHandle>(null);
+	const catalogContainerRef = useRef<HTMLDivElement>(null);
 
 	const handleClickPage = (index: number) => {
+		setActivePage(index);
 		setCurrentPage(index);
 	};
+
 	const handleCurrentPage = (index: number) => {
 		setCurrentPage(index);
 	};
@@ -32,7 +36,7 @@ export default function PdfPreview() {
 	}, []);
 
 	useEffect(() => {
-		virtuosoRef.current?.scrollToIndex({
+		virtuosoRef.current?.scrollIntoView({
 			index: currentPage,
 		});
 	}, [currentPage]);
@@ -51,6 +55,7 @@ export default function PdfPreview() {
 			}}
 		>
 			<div
+				ref={catalogContainerRef}
 				style={{
 					flexBasis: 200,
 					flexShrink: 0,
@@ -64,6 +69,7 @@ export default function PdfPreview() {
 							ref={virtuosoRef}
 							style={{ height, width }}
 							totalCount={pages?.numPages}
+							customScrollParent={catalogContainerRef.current ?? undefined}
 							overscan={{ main: height, reverse: height }} // 上下各多渲染一屏的内容
 							itemContent={(index) =>
 								pages != null ? (
@@ -91,11 +97,15 @@ export default function PdfPreview() {
 								height={height}
 								pages={pages}
 								currentPage={currentPage + 1}
+								activePage={activePage}
 								handleCurrentPage={handleCurrentPage}
 							/>
 						) : null
 					}
 				</AutoSizer>
+				<div className="rounded-md bg-black bg-opacity-60 text-white px-2 py-1 absolute right-4 bottom-4">{`${
+					currentPage + 1
+				} / ${pages?.numPages ?? 1}`}</div>
 			</div>
 		</div>
 	);
