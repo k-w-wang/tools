@@ -15,6 +15,9 @@ const PdfPreview = React.lazy(async () => await import("../page/PdfPreview"));
 const PdfPreviewV2 = React.lazy(
 	async () => await import("../page/PdfPreviewV2")
 );
+const PdfPreviewV3 = React.lazy(
+	async () => await import("../page/PdfPreviewV3")
+);
 
 const StreamOutput = React.lazy(
 	async () => await import("../page/StreamOutput")
@@ -88,6 +91,10 @@ export const routers: RouteObject[] = [
 			{
 				path: "/pdfV2",
 				element: <PdfPreviewV2 />,
+			},
+			{
+				path: "/pdfV3",
+				element: <PdfPreviewV3 />,
 			},
 		],
 	},
@@ -168,6 +175,11 @@ export const menus: ItemType[] = [
 	{
 		key: "/pdfV2",
 		label: <Link to="/pdfV2">PDFV2</Link>,
+		icon: <PieChartOutlined />,
+	},
+	{
+		key: "/pdfV3",
+		label: <Link to="/pdfV3">PDFV3</Link>,
 		icon: <PieChartOutlined />,
 	},
 ];
