@@ -182,4 +182,9 @@ export const menus: ItemType[] = [
 		label: <Link to="/pdfV3">PDFV3</Link>,
 		icon: <PieChartOutlined />,
 	},
+	{
+		key: "/stream",
+		label: <Link to="/stream">Stream</Link>,
+		icon: <PieChartOutlined />,
+	},
 ];
