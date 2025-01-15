@@ -16,7 +16,7 @@ export default defineConfig({
     // https: true
     port: 5174
   },
-
+  base: '/tools/',
   // build: {
   //   commonjsOptions: {
   //     transformMixedEsModules: true,
